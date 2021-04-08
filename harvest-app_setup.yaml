@@ -1,0 +1,153 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: harvest-test
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: harvest-app
+  namespace: harvest-test
+  labels:
+    run: harvest-app
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    name: graphite
+    targetPort: 80
+    nodePort: 32122
+    protocol: TCP
+  - port: 3000 
+    name: grafana
+    targetPort: 3000
+    nodePort: 32123
+    protocol: TCP
+  selector:
+    run: harvest-app
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: harvest-app-graphite-storage
+  namespace: harvest-test
+spec:
+  storageClassName: flexvol
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: harvest-app-dashboards
+  namespace: harvest-test
+spec:
+  storageClassName: flexvol
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: harvest-app-config
+  namespace: harvest-test
+data:
+  poller1.conf: |
+    [harvest]
+    hostname = 10.61.218.100
+    username = harvest
+    password = NetApp!23
+    group    = wopr
+    template = cdot-9.8.DAcustom.conf
+    data_update_freq = 10
+
+  graphite_datasource.yaml: |
+          ---
+          apiVersion: 1
+
+          datasources:
+            - name: Graphite
+              type: graphite
+              access: proxy
+              url: http://localhost:80
+              basicAuth: false
+              isDefault: true
+              jsonData:
+                graphiteVersion: "1.1"
+
+  storageschema.conf: |
+    ##
+    ## Dev defaults
+    ##
+    [netapp.perf.dev]
+    pattern = ^netapp\.perf\.dev\..*
+    retentions = 10s:24h, 1m:100d, 15m:395d, 1h:5y
+
+    [netapp.poller.perf.dev]
+    pattern = ^netapp\.poller\.perf\.dev\..*
+    retentions = 10s:24h, 1m:100d, 15m:395d, 1h:5y
+
+    [netapp.perf7.dev]
+    pattern = ^netapp\.perf7\.dev\..*
+    retentions = 10s:24h, 1m:100d, 15m:395d, 1h:5y
+
+    [netapp.poller.perf7.dev]
+    pattern = ^netapp\.poller\.perf7\.dev\..*
+    retentions = 10s:24h, 1m:100d, 15m:395d, 1h:5y
+
+    ##
+    ## Prod defaults
+    ##
+    [OPM]
+    pattern = ^netapp-performance\..*
+    retentions = 5m:100d, 15m:395d, 1h:5y
+
+    [OPM Capacity]
+    pattern = ^netapp-capacity\..*
+    retentions = 15m:100d, 1d:5y
+
+    [OPM Capacity Poller]
+    pattern = ^netapp-poller\..*
+    retentions = 15m:100d, 1d:5y
+
+    [netapp.capacity]
+    pattern = ^netapp\.capacity\.*
+    retentions = 15m:100d, 1d:5y
+
+    [netapp.poller.capacity]
+    pattern = ^netapp\.poller\.capacity\.*
+    retentions = 15m:100d, 1d:5y
+
+    [netapp.perf]
+    pattern = ^netapp\.perf\.*
+    retentions = 10s:14d, 60s:35d, 5m:100d, 15m:395d, 1h:5y
+
+    [netapp.poller.perf]
+    pattern = ^netapp\.poller\.perf\.*
+    retentions = 10s:14d, 60s:35d, 5m:100d, 15m:395d, 1h:5y
+
+    [netapp.perf7]
+    pattern = ^netapp\.perf7\.*
+    retentions = 60s:35d, 5m:100d, 15m:395d, 1h:5y
+
+    [netapp.poller.perf7]
+    pattern = ^netapp\.poller\.perf7\.*
+    retentions = 60s:35d, 5m:100d, 15m:395d, 1h:5y
+
+    ##
+    ## Catch all
+    ##
+    [defaults]
+    pattern = .*
+    retentions = 10s:14d, 60s:35d, 5m:100d, 15m:395d, 1h:5y
+

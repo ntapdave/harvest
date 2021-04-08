@@ -1,0 +1,25 @@
+function FileData_Pairs(x)
+{
+x.t("upgrade","openssl");
+x.t("topic","release");
+x.t("getting","started");
+x.t("new","feature");
+x.t("includes","following");
+x.t("5.2.2","includes");
+x.t("5.2.2","netapp");
+x.t("netapp","manageability");
+x.t("sdk","5.2.2");
+x.t("sdk","olh");
+x.t("sdk","release");
+x.t("olh","master");
+x.t("started","sdk");
+x.t("feature","upgrade");
+x.t("parent","topic");
+x.t("release","history");
+x.t("master","getting");
+x.t("openssl","1.0.1h");
+x.t("manageability","sdk");
+x.t("history","netapp");
+x.t("following","new");
+x.t("1.0.1h","parent");
+}

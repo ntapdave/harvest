@@ -1,0 +1,171 @@
+{
+   "time" : {
+      "to" : "now",
+      "from" : "now-6h"
+   },
+   "rows" : [
+      {
+         "titleSize" : "h6",
+         "repeatRowId" : null,
+         "repeatIteration" : null,
+         "height" : "700px",
+         "showTitle" : true,
+         "collapse" : false,
+         "panels" : [
+            {
+               "mode" : "html",
+               "style" : {},
+               "content" : "<style>\ntable, th, td {\n    border: 1px solid white;\n    padding: 5px;\n}\n</style>\n\nThe table below provides a map to available dashboards depending on your area of interest:\n<br><br>\n\n<table>\n<tr>\n<th width='15%'>Dashboard Name</th>\n<th width='25%'>Description</th>\n<th width='60%'>When to Use</th>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-dashboard-cluster-group'>Cluster Group</a></td>\n<td>Overall capacity and performance across clusters; cluster views</td>\n<td>Analyze workload balance across many clusters, identify top resources in use, identify top SVM workloads, analyze capacity and performance trends, etc.</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-dashboard-cluster'>Cluster</a></td>\n<td>Overall cluster capacity and performance; node and SVM views</td>\n<td>Analyze workload balance across nodes in the cluster, identify top node resources in use, identify top SVM workloads, analyze capacity and performance trends, etc.</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-dashboard-node'>Node</a></td>\n<td>Individual node capacity and performance; node view</td>\n<td>Analyze node performance and resource utilization, analyze top resources within a node, aggr capacity utilization, etc.</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-dashboard-svm'>SVM</a></td>\n<td>SVM capacity and performance; SVM view</td>\n<td>Useful to view SVM performance, identify busiest volumes, capacity utilization, etc.</td>\n</tr>\n\n</table>",
+               "editable" : true,
+               "error" : false,
+               "type" : "text",
+               "title" : "NetApp cDOT Dashboard Map",
+               "id" : 5,
+               "span" : 4,
+               "links" : []
+            },
+            {
+               "mode" : "html",
+               "style" : {},
+               "content" : "<style>\ntable, th, td {\n    border: 1px solid white;\n    padding: 5px;\n}\n</style>\n\nThe table below provides a map to available detail views depending on your area of interest:\n<br><br>\n\n<table>\n<tr>\n<th width='15%'>Dashboard Name</th>\n<th width='25%'>Description</th>\n<th width='60%'>When to Use</th>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-disk-and-cache-layers'>Disk and Cache Layers</a></td>\n<td>Top disk aggregates, disk IO behavior, aggregate capacity, Flash Pool, and Flash Cache; node and aggregate views</td>\n<td>Analyze disk and caching layer performance and capacity, efficiency from Flash Cache and Flash Pool, Flash Pool sizing, troubleshoot data layout issue, etc.</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-network-port'>Network Port</a></td>\n<td>Top Ports with send/receive data and link utilization for Ethernet, send/receive data for FCP; Network Port views</td>\n<td>Analyze for busiest Ports, trending of usage, etc</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-network-lif'>Network LIF</a></td>\n<td>Top LIFs with send/receive data, IOPs and latency for SAN LIFs; SVM LIF views</td>\n<td>Analyze for busiest LIFs, SAN LIFs with high latency, trending of LIF usage, etc</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-volume'>Volume</a></td>\n<td>Top FlexVols with throughput, IOP, and latency.  Latency breakdown within cluster.  Reads from cache/disk, capacity view, etc; Volume views</td>\n<td>Analyze for busiest volumes, view detailed latency breakdown for a volume, trend usage, etc</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-lun'>Lun</a></td>\n<td>Top LUNs with throughput, IOP, and latency.  vStorage offload, IOP sizes, etc.  Capacity view including LUN fill rate; LUN and Volume views</td>\n<td>Analyze for busiest LUNs, view details of LUN performance, latency breakdown for parent volume, trend usage, etc</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-metrocluster'>MetroCluster</a></td>\n<td>View of MetroCluster specific resources like FCVI (NVRAM) Mirroring, views of plexes</td>\n<td>Analyze performance and latency of MetroCluster mirroring</td>\n</tr>\n\n</table>",
+               "transparent" : false,
+               "editable" : true,
+               "error" : false,
+               "type" : "text",
+               "title" : "NetApp cDOT Detail Map",
+               "id" : 3,
+               "span" : 8,
+               "links" : []
+            }
+         ],
+         "repeat" : null,
+         "title" : "Clustered Data ONTAP Systems"
+      },
+      {
+         "titleSize" : "h6",
+         "repeatRowId" : null,
+         "repeatIteration" : null,
+         "height" : "500px",
+         "showTitle" : true,
+         "collapse" : false,
+         "panels" : [
+            {
+               "mode" : "html",
+               "style" : {},
+               "content" : "<style>\ntable, th, td {\n    border: 1px solid white;\n    padding: 5px;\n}\n</style>\n\nThe table below provides a map to available dashboards depending on your area of interest:\n<br><br>\n\n<table>\n<tr>\n<th width='15%'>Dashboard Name</th>\n<th width='25%'>Description</th>\n<th width='60%'>When to Use</th>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-dashboard-7-mode-group'>Node Group</a></td>\n<td>Group of nodes performance; nodes view</td>\n<td>Analyze nodes performance and resource utilization, analyze top resources across a set of nodes, for example an HA-Pair or all nodes in a group.</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-dashboard-7-mode-node'>Node</a></td>\n<td>Individual node capacity and performance; node view</td>\n<td>Analyze node performance and resource utilization, analyze top resources within a node, aggr capacity utilization, etc.</td>\n</tr>\n\n</table>",
+               "editable" : true,
+               "error" : false,
+               "type" : "text",
+               "title" : "NetApp 7-Mode Dashboard Map",
+               "id" : 6,
+               "span" : 4,
+               "links" : []
+            },
+            {
+               "mode" : "html",
+               "style" : {},
+               "content" : "<style>\ntable, th, td {\n    border: 1px solid white;\n    padding: 5px;\n}\n</style>\n\nThe table below provides a map to available detail views depending on your area of interest:\n<br><br>\n\n<table>\n<tr>\n<th width='15%'>Dashboard Name</th>\n<th width='25%'>Description</th>\n<th width='60%'>When to Use</th>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-7-mode-disk-and-cache-layers'>Disk and Cache Layers</a></td>\n<td>Top disk aggregates, disk IO behavior, aggregate capacity, Flash Pool, and Flash Cache; node and aggregate views</td>\n<td>Analyze disk and caching layer performance and capacity, efficiency from Flash Cache and Flash Pool, Flash Pool sizing, troubleshoot data layout issue, etc.</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-7-mode-network-port'>Network Port</a></td>\n<td>Top Ports with send/receive data for Ethernet and FCP; Network Port views</td>\n<td>Analyze for busiest Ports, trending of usage, etc</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-7-mode-windows-file-services'>Windows File Services</a></td>\n<td>Top windows authentication latency, virus scanner requests and latency, pBlks; Node and vFiler views</td>\n<td>Analyze supporting infrastructure performance and utilization such as Windows AD and Virus scanning servers</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-7-mode-volume'>Volume</a></td>\n<td>Top FlexVols with throughput, IOP, and latency; Volume views</td>\n<td>Analyze for busiest volumes, trend usage, etc</td>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-7-mode-lun'>Lun</a></td>\n<td>Top LUNs with throughput, IOP, latency, IOP sizes, etc; LUN views</td>\n<td>Analyze for busiest LUNs, view details of LUN performance, trend usage, etc</td>\n</tr>\n\n</table>",
+               "editable" : true,
+               "error" : false,
+               "type" : "text",
+               "title" : "NetApp 7-Mode Dashboard Map",
+               "id" : 8,
+               "span" : 8,
+               "links" : []
+            }
+         ],
+         "repeat" : null,
+         "title" : "7-Mode Data ONTAP systems"
+      },
+      {
+         "titleSize" : "h6",
+         "repeatRowId" : null,
+         "repeatIteration" : null,
+         "height" : "250px",
+         "showTitle" : true,
+         "collapse" : false,
+         "panels" : [
+            {
+               "mode" : "html",
+               "style" : {},
+               "content" : "<style>\ntable, th, td {\n    border: 1px solid white;\n    padding: 5px;\n}\n</style>\n\nThe table below provides a map to available dashboards depending on your area of interest:\n<br><br>\n\n<table>\n<tr>\n<th width='15%'>Dashboard Name</th>\n<th width='25%'>Description</th>\n<th width='60%'>When to Use</th>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-harvest-poller'>Harvest Poller</a></td>\n<td>Harvest poller performance; Harvest metadata</td>\n<td>Useful to identify object types that have long API response times, view which object types or monitored systems submit the most metrics, etc</td>\n</tr>\n\n</table>",
+               "editable" : true,
+               "error" : false,
+               "type" : "text",
+               "title" : "NetApp Harvest Dashboard Map",
+               "id" : 7,
+               "span" : 6,
+               "links" : []
+            },
+            {
+               "mode" : "html",
+               "style" : {},
+               "content" : "<style>\ntable, th, td {\n    border: 1px solid white;\n    padding: 5px;\n}\n</style>\n\nThe table below provides a map to available dashboards depending on your area of interest:\n<br><br>\n\n<table>\n<tr>\n<th width='15%'>Dashboard Name</th>\n<th width='25%'>Description</th>\n<th width='60%'>When to Use</th>\n</tr>\n\n<tr>\n<td><a href='/dashboard/db/netapp-detail-graphite-server'>Graphite</a></td>\n<td>Graphite system performance</td>\n<td>Useful to show Graphite process activity, performance, verify metrics are arriving, etc</td>\n</tr>\n\n</table>",
+               "editable" : true,
+               "error" : false,
+               "type" : "text",
+               "title" : "Graphite Dashboard Map",
+               "id" : 9,
+               "span" : 6,
+               "links" : []
+            }
+         ],
+         "repeat" : null,
+         "title" : "Monitoring Systems"
+      }
+   ],
+   "timepicker" : {
+      "enable" : true,
+      "status" : "Stable",
+      "refresh_intervals" : [
+         "5s",
+         "10s",
+         "30s",
+         "1m",
+         "5m",
+         "15m",
+         "30m",
+         "1h",
+         "2h",
+         "1d"
+      ],
+      "time_options" : [
+         "5m",
+         "15m",
+         "1h",
+         "6h",
+         "12h",
+         "24h",
+         "2d",
+         "7d",
+         "30d"
+      ],
+      "notice" : false,
+      "now" : true,
+      "collapse" : false,
+      "type" : "timepicker"
+   },
+   "graphTooltip" : 0,
+   "refresh" : false,
+   "hideControls" : false,
+   "id" : 20,
+   "links" : [],
+   "timezone" : "browser",
+   "version" : 3,
+   "style" : "dark",
+   "templating" : {
+      "list" : []
+   },
+   "annotations" : {
+      "list" : []
+   },
+   "tags" : [
+      "NetAppHarvest",
+      "NetAppHarvest-7",
+      "NetAppHarvest-Poller"
+   ],
+   "schemaVersion" : 14,
+   "gnetId" : null,
+   "editable" : true,
+   "title" : "NetApp"
+}

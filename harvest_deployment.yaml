@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harvest-app
+  namespace: harvest-test
+spec:
+  selector:
+    matchLabels:
+      run: harvest-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: harvest-app
+    spec:
+      volumes:
+        - name: graphite-storage
+          persistentVolumeClaim:
+            claimName: harvest-app-graphite-storage
+        - name: grafana-dashboards
+          persistentVolumeClaim:
+            claimName: harvest-app-dashboards
+        - name: harvest-config
+          configMap:
+            name: harvest-app-config
+      nodeSelector:
+        gpu: "true"
+      containers:
+        - name: graphite-statsd
+          image: graphiteapp/graphite-statsd
+          command: ['/entrypoint']
+          ports:
+            - containerPort: 80
+            - containerPort: 2003
+            - containerPort: 2004
+            - containerPort: 2023
+            - containerPort: 2024
+            - containerPort: 8125
+            - containerPort: 8125
+              protocol: UDP 
+            - containerPort: 8126
+          volumeMounts:
+            - mountPath: "/opt/graphite/storage"
+              name: graphite-storage
+            - mountPath: "/opt/graphite/conf/storage-schemas.conf"
+              name: harvest-config
+              subPath: storageschema.conf
+        - name: harvest
+          image: netapp/harvest:v1.1
+          imagePullPolicy: Never
+          command: ['/sbin/my_init']
+          volumeMounts:
+            - mountPath: "/opt/netapp-harvest/harvest-poller.conf"
+              name: harvest-config
+              subPath: poller1.conf
+        - name: grafana
+          image: grafana/grafana:7.5.3
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: "/etc/grafana/provisioning/dashboards"
+              name: grafana-dashboards
+            - mountPath: "/etc/grafana/provisioning/datasources/graphite_datasource.yaml"
+              name: harvest-config
+              subPath: graphite_datasource.yaml

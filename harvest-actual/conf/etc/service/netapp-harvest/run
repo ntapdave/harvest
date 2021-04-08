@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#echo "[$HARVEST_POLLER_NAME]" >> /opt/netapp-harvest/netapp-harvest.conf
+#echo "hostname = $HARVEST_STORAGE_HOSTNAME" >> /opt/netapp-harvest/netapp-harvest.conf
+#echo "group = $HARVEST_STORAGE_GROUP" >> /opt/netapp-harvest/netapp-harvest.conf
+#echo "username = $HARVEST_STORAGE_USER" >> /opt/netapp-harvest/netapp-harvest.conf
+#echo "password = $HARVEST_STORAGE_PW" >> /opt/netapp-harvest/netapp-harvest.conf
+#echo "data_update_freq = $HARVEST_UPDATE_FREQ" >> /opt/netapp-harvest/netapp-harvest.conf
+#echo "template = $HARVEST_TEMPLATE" >> /opt/netapp-harvest/netapp-harvest.conf
+#echo "graphite_server = $GRAPHITE_SERVER" >> /opt/netapp-harvest/netapp-harvest.conf
+
+#cat /opt/netapp-harvest/harvest-poller.conf >> /opt/netapp-harvest/netapp-harvest.conf
+
+exec /opt/netapp-harvest/netapp-worker -poller=harvest -conf=harvest-poller.conf

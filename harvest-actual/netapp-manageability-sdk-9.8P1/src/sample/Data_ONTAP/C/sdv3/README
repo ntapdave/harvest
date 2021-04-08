@@ -1,0 +1,106 @@
+SnapDiff V3 application for Linux
+-----------------------------------
+
+Usage:
+-----
+
+This application implements snapdiff v3 APIs.
+
+The usage of the application is as follows:
+
+USAGE: ./sdv3-client -f <VSERVERIP> -h <SESSION_HANDLE> -i <SESSION_ID>
+
+			VSERVERIP: Vserver Data IP address.
+			SESSION_HANDLE, SESSION_ID: Please refer in snapdiff V3 API documentation
+			on how to invoke REST API "POST /storage/volumes/{volume.uuid}/snapdiff/sessions"
+			and get SESSION_HANDLE and SESSION_ID.
+
+
+Compilation:
+-----------
+
+Run "make" in /src/sample/Data_ONTAP/C/sdv3 directory to compile the application.
+This should generate sdv3-client under the same location.
+
+Set $LD_LIBRARY_PATH to <head_dir>/sdk-staging/lib/linux-64 before compilng the application.
+
+Dependencies:
+------------
+
+sdv3-client expects the following libraries in the <head_dir>/sdk-staging/lib/linux-64 path.
+
+libadt.a
+libadt.so
+libcrypto.so
+libnetapp.a
+libnetapp.so
+libsdv3.a
+libsdv3.so
+libssl.so
+libxml.so
+
+
+SnapDiff V3 application for Windows
+-----------------------------------
+
+Usage:
+-----
+
+The usage of the Windows application is as follows:
+
+USAGE: sdv3_client_for_windows.exe -f <VSERVERIP> -h <SESSION_HANDLE> -i <SESSION_ID>
+
+			VSERVERIP: Vserver Data IP address.
+			SESSION_HANDLE, SESSION_ID: Please refer in snapdiff V3 API documentation
+			on how to invoke REST API "POST /storage/volumes/{volume.uuid}/snapdiff/sessions"
+			and get SESSION_HANDLE and SESSION_ID.
+
+
+Compilation:
+-----------
+
+Use sdv3_client_for_windows.vcxproj to compile the application. This should generate
+sdv3_client_for_windows.exe in a new /Debug or /Release directory, depending on
+whether Debug or Release version is being built.
+
+Follow the below steps to build this sample application on windows:
+
+1. Open <Extracted_NMSDK_ZIP>/src/sample/Data_ONTAP/C/sdv3/client_windows/sdv3_client_for_windows.vcxproj file in Visual Studio 2015.
+2. Download 'oncrpc' from https://sourceforge.net/projects/oncrpc-windows/ URL and extract it.
+3. Make the following changes in sdv3_client_for_windows.vcxproj file:
+    3.1. Right click on sdv3_client_for_windows project in Solution Explorer
+    3.2. Click on Properties. This should open up the properties for a particular configuration type (like Release x86 for instance).
+    3.3. In the Properties window, select C/C++ ----> General section on the left pane
+    3.4. Then under "Additional Include Directories", add the path to the oncrpc /include directory. To do this, replace "[ONCRPC_ROOT_DIR_PATH]" with the path to the extracted oncrpc root directory (from step-3 above). Repeat this step for all configuration types: Debug/Release - x86 (aka Win32)/x64.
+         For example: If oncrpc is extracted into "C:\oncrpc" directory, then the complete path to the /include directory you should see after replacing "[ONCRPC_ROOT_DIR_PATH]", will be "C:\oncrpc\win32\include" in the sdv3_client_for_windows.vcxproj file.
+    3.5  Click on "Apply" and then "OK".
+4. Download getopt.h and getopt.c from https://github.com/alex85k/wingetopt URL and extract it, say into C:/wingetopt-master/ for instance.
+    4.1  Copy getopt.h and getopt.c files from C:/wingetopt-master/src/, to <Extracted_NMSDK_ZIP>/src/sample/Data_ONTAP/C/sdv3/client_windows/include and <Extracted_NMSDK_ZIP>/src/sample/Data_ONTAP/C/sdv3/client_windows respectively.
+    4.2  You might have to comment out line# 348:
+            (posixly_correct = (getenv("POSIXLY_CORRECT") != NULL))
+         in getopt.c, because there is a deprecation error for getenv() method.
+5. Right cick on sdv3_client_for_windows project once again, and click on "Build". If build is successful, the corresponding .exe file will be generated.
+   Note: For subsequent builds after making any changes to the project, you need to click on "Rebuild" instead of "Build" above.
+
+
+Dependencies:
+------------
+
+sdv3_client_for_windows.exe expects the following *.dll files in the DLL search path
+of the application. Make sure you copy these into the appropriate /Debug or /Release
+directory which contains the .exe file.
+
+libsdv3.dll (or) libsdv3d.dll, depending on whether it is Release or Debug configuration.
+oncrpc.dll
+libeay32.dll
+ssleay32.dll
+
+i) These oncrpc.dll files can be generated using the below steps:
+    A) Download oncrpc zip from: https://sourceforge.net/projects/oncrpc-windows/ and extract it.
+	B) Now navigate to oncrpc_win32_release_2\oncrpc\win32\librpc\lib and open oncrpc.dsp file in Visual Studio (I have used Visual Studio 2015 Professional)
+	C) Then build for flavors like Debug - x86 & Release - x86, and copy oncrpc.dll from Debug and Release folder to a separate location.
+	D) Add x64 to Solution Platforms of Configuration Manager, by default only x86 is available.
+	E) Then build for flavors like Debug x64 & Release - x64, and copy oncrpc.dll from Debug and Release folder to a separate location.
+
+ii) You must ensure that the libeay32 and ssleay32 dynamic binaries(DLLs) are present in NetApp Manageability SDK zip(i.e. <Extracted_NMSDK_ZIP>) at lib/nt/ and lib/nt/x64 locations respectively.
+

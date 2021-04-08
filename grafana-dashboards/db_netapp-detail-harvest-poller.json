@@ -1,0 +1,900 @@
+{
+   "time" : {
+      "to" : "now",
+      "from" : "now-6h"
+   },
+   "rows" : [
+      {
+         "titleSize" : "h6",
+         "repeatRowId" : null,
+         "repeatIteration" : null,
+         "height" : "302px",
+         "showTitle" : true,
+         "collapse" : false,
+         "panels" : [
+            {
+               "scroll" : false,
+               "transparent" : false,
+               "error" : false,
+               "id" : 12,
+               "links" : [],
+               "targets" : [
+                  {
+                     "target" : "highestMax(groupByNode(netapp.poller.$PollerType.$Group.$System.*.apiTime, 4, 'sum'), $TopResources)",
+                     "textEditor" : false,
+                     "refId" : "A"
+                  }
+               ],
+               "transform" : "timeseries_aggregations",
+               "fontSize" : "100%",
+               "styles" : [
+                  {
+                     "pattern" : "Time",
+                     "type" : "date",
+                     "dateFormat" : "YYYY-MM-DD HH:mm:ss"
+                  },
+                  {
+                     "colorMode" : "row",
+                     "unit" : "s",
+                     "pattern" : "/.*/",
+                     "type" : "number",
+                     "thresholds" : [
+                        "60",
+                        "60"
+                     ],
+                     "decimals" : 0,
+                     "colors" : [
+                        "rgba(71, 212, 59, 0.4)",
+                        "rgba(245, 150, 40, 0.73)",
+                        "rgba(225, 40, 40, 0.59)"
+                     ]
+                  }
+               ],
+               "pageSize" : 5,
+               "showHeader" : true,
+               "sort" : {
+                  "desc" : true,
+                  "col" : 1
+               },
+               "editable" : true,
+               "columns" : [
+                  {
+                     "value" : "max",
+                     "text" : "Max"
+                  }
+               ],
+               "type" : "table",
+               "span" : 3,
+               "title" : "Maximum Poller Update Duration"
+            },
+            {
+               "scroll" : false,
+               "transparent" : false,
+               "error" : false,
+               "id" : 13,
+               "links" : [],
+               "targets" : [
+                  {
+                     "target" : "highestMax(groupByNode(netapp.poller.capacity.$Group.$System.*.metricsReceived, 4, 'sum'), $TopResources)",
+                     "textEditor" : false,
+                     "refId" : "A"
+                  },
+                  {
+                     "target" : "alias(sumSeries(netapp.poller.capacity.$Group.$System.*.metricsReceived), 'TOTAL')",
+                     "textEditor" : false,
+                     "refId" : "B"
+                  }
+               ],
+               "transform" : "timeseries_aggregations",
+               "fontSize" : "100%",
+               "styles" : [
+                  {
+                     "pattern" : "Time",
+                     "type" : "date",
+                     "dateFormat" : "YYYY-MM-DD HH:mm:ss"
+                  },
+                  {
+                     "colorMode" : null,
+                     "unit" : "none",
+                     "pattern" : "/.*/",
+                     "type" : "number",
+                     "thresholds" : [
+                        "60",
+                        "60"
+                     ],
+                     "decimals" : 0,
+                     "colors" : [
+                        "rgba(71, 212, 59, 0.4)",
+                        "rgba(245, 150, 40, 0.73)",
+                        "rgba(225, 40, 40, 0.59)"
+                     ]
+                  }
+               ],
+               "pageSize" : 5,
+               "showHeader" : true,
+               "sort" : {
+                  "desc" : true,
+                  "col" : 1
+               },
+               "editable" : true,
+               "columns" : [
+                  {
+                     "value" : "avg",
+                     "text" : "Avg"
+                  }
+               ],
+               "type" : "table",
+               "span" : 3,
+               "title" : "# OCUM Metrics (per 15 min)"
+            },
+            {
+               "scroll" : false,
+               "transparent" : false,
+               "error" : false,
+               "id" : 14,
+               "links" : [],
+               "targets" : [
+                  {
+                     "target" : "highestMax(groupByNode(netapp.poller.perf7.$Group.$System.*.metricsReceived, 4, 'sum'), $TopResources)",
+                     "textEditor" : false,
+                     "refId" : "A"
+                  },
+                  {
+                     "target" : "alias(sumSeries(netapp.poller.perf7.$Group.$System.*.metricsReceived), 'TOTAL')",
+                     "textEditor" : false,
+                     "refId" : "B"
+                  }
+               ],
+               "transform" : "timeseries_aggregations",
+               "fontSize" : "100%",
+               "styles" : [
+                  {
+                     "pattern" : "Time",
+                     "type" : "date",
+                     "dateFormat" : "YYYY-MM-DD HH:mm:ss"
+                  },
+                  {
+                     "colorMode" : null,
+                     "unit" : "none",
+                     "pattern" : "/.*/",
+                     "type" : "number",
+                     "thresholds" : [
+                        "60",
+                        "60"
+                     ],
+                     "decimals" : 0,
+                     "colors" : [
+                        "rgba(71, 212, 59, 0.4)",
+                        "rgba(245, 150, 40, 0.73)",
+                        "rgba(225, 40, 40, 0.59)"
+                     ]
+                  }
+               ],
+               "pageSize" : 6,
+               "showHeader" : true,
+               "sort" : {
+                  "desc" : true,
+                  "col" : 1
+               },
+               "editable" : true,
+               "columns" : [
+                  {
+                     "value" : "avg",
+                     "text" : "Avg"
+                  }
+               ],
+               "type" : "table",
+               "span" : 3,
+               "title" : "# 7-Mode Metrics (per min)"
+            },
+            {
+               "scroll" : false,
+               "transparent" : false,
+               "error" : false,
+               "id" : 15,
+               "links" : [],
+               "targets" : [
+                  {
+                     "target" : "highestMax(groupByNode(netapp.poller.perf.$Group.$System.*.metricsReceived, 4, 'sum'), $TopResources)",
+                     "textEditor" : false,
+                     "refId" : "A"
+                  },
+                  {
+                     "target" : "alias(sumSeries(netapp.poller.perf.$Group.$System.*.metricsReceived), 'TOTAL')",
+                     "textEditor" : false,
+                     "refId" : "B"
+                  }
+               ],
+               "transform" : "timeseries_aggregations",
+               "fontSize" : "100%",
+               "styles" : [
+                  {
+                     "pattern" : "Time",
+                     "type" : "date",
+                     "dateFormat" : "YYYY-MM-DD HH:mm:ss"
+                  },
+                  {
+                     "colorMode" : null,
+                     "unit" : "none",
+                     "pattern" : "/.*/",
+                     "type" : "number",
+                     "thresholds" : [
+                        "60",
+                        "60"
+                     ],
+                     "decimals" : 0,
+                     "colors" : [
+                        "rgba(71, 212, 59, 0.4)",
+                        "rgba(245, 150, 40, 0.73)",
+                        "rgba(225, 40, 40, 0.59)"
+                     ]
+                  }
+               ],
+               "pageSize" : 6,
+               "showHeader" : true,
+               "sort" : {
+                  "desc" : true,
+                  "col" : 1
+               },
+               "editable" : true,
+               "columns" : [
+                  {
+                     "value" : "avg",
+                     "text" : "Avg"
+                  }
+               ],
+               "type" : "table",
+               "span" : 3,
+               "title" : "# cDOT Metrics (per min)"
+            }
+         ],
+         "repeat" : null,
+         "title" : "Highlights"
+      },
+      {
+         "titleSize" : "h6",
+         "repeatRowId" : null,
+         "repeatIteration" : null,
+         "height" : "250px",
+         "showTitle" : true,
+         "collapse" : true,
+         "panels" : [
+            {
+               "timeFrom" : null,
+               "xaxis" : {
+                  "show" : true,
+                  "mode" : "time",
+                  "name" : null,
+                  "buckets" : null,
+                  "values" : []
+               },
+               "spaceLength" : 10,
+               "points" : false,
+               "dashLength" : 10,
+               "id" : 4,
+               "renderer" : "flot",
+               "links" : [],
+               "stack" : false,
+               "legend" : {
+                  "rightSide" : true,
+                  "hideEmpty" : true,
+                  "show" : true,
+                  "min" : false,
+                  "avg" : true,
+                  "max" : true,
+                  "values" : true,
+                  "total" : false,
+                  "alignAsTable" : true,
+                  "current" : true
+               },
+               "aliasColors" : {},
+               "percentage" : false,
+               "pointradius" : 2,
+               "timeShift" : null,
+               "seriesOverrides" : [],
+               "type" : "graph",
+               "title" : "Metrics per Monitored System",
+               "span" : 12,
+               "bars" : false,
+               "lines" : true,
+               "steppedLine" : false,
+               "thresholds" : [],
+               "tooltip" : {
+                  "value_type" : "cumulative",
+                  "shared" : true,
+                  "sort" : 0,
+                  "msResolution" : false
+               },
+               "fill" : 1,
+               "error" : false,
+               "targets" : [
+                  {
+                     "target" : "highestAverage(groupByNode(netapp.poller.$PollerType.$Group.$System.*.metricsReceived, 4, 'sumSeries'), $TopResources)",
+                     "hide" : false,
+                     "refId" : "A"
+                  }
+               ],
+               "yaxes" : [
+                  {
+                     "show" : true,
+                     "format" : "none",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  },
+                  {
+                     "show" : true,
+                     "format" : "short",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  }
+               ],
+               "grid" : {},
+               "dashes" : false,
+               "datasource" : null,
+               "linewidth" : 2,
+               "editable" : true,
+               "nullPointMode" : "connected"
+            },
+            {
+               "timeFrom" : null,
+               "xaxis" : {
+                  "show" : true,
+                  "mode" : "time",
+                  "name" : null,
+                  "buckets" : null,
+                  "values" : []
+               },
+               "spaceLength" : 10,
+               "points" : false,
+               "dashLength" : 10,
+               "id" : 11,
+               "renderer" : "flot",
+               "links" : [],
+               "stack" : false,
+               "legend" : {
+                  "rightSide" : true,
+                  "hideEmpty" : true,
+                  "show" : true,
+                  "min" : false,
+                  "avg" : true,
+                  "max" : true,
+                  "values" : true,
+                  "total" : false,
+                  "alignAsTable" : true,
+                  "current" : true
+               },
+               "aliasColors" : {},
+               "percentage" : false,
+               "pointradius" : 2,
+               "timeShift" : null,
+               "seriesOverrides" : [],
+               "type" : "graph",
+               "title" : "API Time per Monitored System",
+               "span" : 12,
+               "bars" : false,
+               "lines" : true,
+               "steppedLine" : false,
+               "thresholds" : [],
+               "tooltip" : {
+                  "value_type" : "cumulative",
+                  "shared" : true,
+                  "sort" : 0,
+                  "msResolution" : true
+               },
+               "fill" : 1,
+               "error" : false,
+               "targets" : [
+                  {
+                     "target" : "highestAverage(groupByNode(netapp.poller.$PollerType.$Group.$System.*.apiTime, 4, 'sumSeries'), $TopResources)",
+                     "hide" : false,
+                     "refId" : "A"
+                  }
+               ],
+               "yaxes" : [
+                  {
+                     "show" : true,
+                     "format" : "none",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  },
+                  {
+                     "show" : true,
+                     "format" : "short",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  }
+               ],
+               "grid" : {},
+               "dashes" : false,
+               "datasource" : null,
+               "linewidth" : 2,
+               "editable" : true,
+               "nullPointMode" : "connected"
+            }
+         ],
+         "repeat" : null,
+         "title" : "Overall Poller Details"
+      },
+      {
+         "titleSize" : "h6",
+         "repeatRowId" : null,
+         "repeatIteration" : null,
+         "height" : "500px",
+         "showTitle" : true,
+         "collapse" : true,
+         "panels" : [
+            {
+               "timeFrom" : null,
+               "xaxis" : {
+                  "show" : true,
+                  "mode" : "time",
+                  "name" : null,
+                  "buckets" : null,
+                  "values" : []
+               },
+               "spaceLength" : 10,
+               "points" : false,
+               "dashLength" : 10,
+               "id" : 1,
+               "renderer" : "flot",
+               "links" : [],
+               "stack" : true,
+               "legend" : {
+                  "sortDesc" : true,
+                  "rightSide" : true,
+                  "hideEmpty" : false,
+                  "show" : true,
+                  "min" : true,
+                  "avg" : true,
+                  "max" : true,
+                  "values" : true,
+                  "total" : true,
+                  "alignAsTable" : true,
+                  "current" : false
+               },
+               "percentage" : false,
+               "aliasColors" : {},
+               "annotate" : {
+                  "enable" : false
+               },
+               "pointradius" : 5,
+               "timeShift" : null,
+               "seriesOverrides" : [],
+               "scale" : 1,
+               "resolution" : 100,
+               "type" : "graph",
+               "title" : "Number of Metrics",
+               "span" : 12,
+               "bars" : true,
+               "lines" : false,
+               "steppedLine" : false,
+               "thresholds" : [],
+               "tooltip" : {
+                  "value_type" : "individual",
+                  "shared" : true,
+                  "query_as_alias" : true,
+                  "sort" : 0,
+                  "msResolution" : false
+               },
+               "fill" : 0,
+               "error" : false,
+               "targets" : [
+                  {
+                     "target" : "aliasByNode(netapp.poller.$PollerType.$Group.$System.*.metricsReceived, 5)",
+                     "refId" : "A"
+                  }
+               ],
+               "yaxes" : [
+                  {
+                     "show" : true,
+                     "format" : "none",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  },
+                  {
+                     "show" : true,
+                     "format" : "short",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  }
+               ],
+               "grid" : {},
+               "dashes" : false,
+               "datasource" : null,
+               "zerofill" : true,
+               "linewidth" : 1,
+               "editable" : true,
+               "nullPointMode" : "connected"
+            },
+            {
+               "timeFrom" : null,
+               "xaxis" : {
+                  "show" : true,
+                  "mode" : "time",
+                  "name" : null,
+                  "buckets" : null,
+                  "values" : []
+               },
+               "spaceLength" : 10,
+               "points" : false,
+               "dashLength" : 10,
+               "id" : 5,
+               "renderer" : "flot",
+               "stack" : true,
+               "legend" : {
+                  "sortDesc" : true,
+                  "rightSide" : true,
+                  "hideEmpty" : true,
+                  "show" : true,
+                  "min" : true,
+                  "avg" : true,
+                  "max" : true,
+                  "values" : true,
+                  "total" : true,
+                  "sort" : "total",
+                  "alignAsTable" : true,
+                  "current" : false
+               },
+               "percentage" : false,
+               "aliasColors" : {},
+               "annotate" : {
+                  "enable" : false
+               },
+               "pointradius" : 5,
+               "timeShift" : null,
+               "seriesOverrides" : [],
+               "scale" : 1,
+               "resolution" : 100,
+               "type" : "graph",
+               "title" : "API Time",
+               "span" : 12,
+               "bars" : true,
+               "lines" : false,
+               "steppedLine" : false,
+               "thresholds" : [],
+               "tooltip" : {
+                  "value_type" : "individual",
+                  "shared" : true,
+                  "query_as_alias" : true,
+                  "sort" : 0,
+                  "msResolution" : true
+               },
+               "fill" : 0,
+               "error" : false,
+               "decimals" : 1,
+               "targets" : [
+                  {
+                     "target" : "aliasByNode(netapp.poller.$PollerType.$Group.$System.*.apiTime, 5)",
+                     "refId" : "A"
+                  }
+               ],
+               "yaxes" : [
+                  {
+                     "show" : true,
+                     "format" : "s",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  },
+                  {
+                     "show" : true,
+                     "format" : "short",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  }
+               ],
+               "grid" : {},
+               "dashes" : false,
+               "datasource" : null,
+               "zerofill" : true,
+               "linewidth" : 1,
+               "editable" : true,
+               "nullPointMode" : "null as zero"
+            },
+            {
+               "timeFrom" : null,
+               "xaxis" : {
+                  "show" : true,
+                  "mode" : "time",
+                  "name" : null,
+                  "buckets" : null,
+                  "values" : []
+               },
+               "spaceLength" : 10,
+               "points" : false,
+               "dashLength" : 10,
+               "id" : 6,
+               "renderer" : "flot",
+               "links" : [],
+               "stack" : true,
+               "legend" : {
+                  "sortDesc" : null,
+                  "rightSide" : true,
+                  "hideEmpty" : true,
+                  "show" : true,
+                  "min" : true,
+                  "avg" : true,
+                  "max" : true,
+                  "values" : true,
+                  "total" : true,
+                  "sort" : null,
+                  "alignAsTable" : true,
+                  "current" : false
+               },
+               "percentage" : false,
+               "aliasColors" : {},
+               "annotate" : {
+                  "enable" : false
+               },
+               "pointradius" : 5,
+               "timeShift" : null,
+               "seriesOverrides" : [],
+               "scale" : 1,
+               "resolution" : 100,
+               "type" : "graph",
+               "title" : "Plugin Time",
+               "span" : 12,
+               "bars" : true,
+               "lines" : false,
+               "steppedLine" : false,
+               "thresholds" : [],
+               "tooltip" : {
+                  "value_type" : "individual",
+                  "shared" : true,
+                  "query_as_alias" : true,
+                  "sort" : 0,
+                  "msResolution" : true
+               },
+               "fill" : 0,
+               "error" : false,
+               "decimals" : 1,
+               "targets" : [
+                  {
+                     "target" : "aliasByNode(netapp.poller.$PollerType.$Group.$System.*.pluginTime, 5)",
+                     "refId" : "A"
+                  }
+               ],
+               "yaxes" : [
+                  {
+                     "show" : true,
+                     "format" : "s",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  },
+                  {
+                     "show" : true,
+                     "format" : "short",
+                     "min" : null,
+                     "max" : null,
+                     "logBase" : 1
+                  }
+               ],
+               "grid" : {},
+               "dashes" : false,
+               "height" : "",
+               "datasource" : null,
+               "zerofill" : true,
+               "linewidth" : 1,
+               "editable" : true,
+               "nullPointMode" : "null as zero"
+            }
+         ],
+         "repeat" : null,
+         "title" : "Individual Poller Collection Details (Must select PollerType/Group/System)"
+      }
+   ],
+   "timepicker" : {
+      "enable" : true,
+      "status" : "Stable",
+      "refresh_intervals" : [
+         "1m",
+         "5m",
+         "15m",
+         "30m",
+         "1h",
+         "2h",
+         "1d"
+      ],
+      "time_options" : [
+         "15m",
+         "1h",
+         "6h",
+         "12h",
+         "24h",
+         "2d",
+         "7d",
+         "30d",
+         "180d",
+         "1y",
+         "2y"
+      ],
+      "notice" : false,
+      "now" : true,
+      "collapse" : false,
+      "type" : "timepicker"
+   },
+   "graphTooltip" : 0,
+   "refresh" : false,
+   "hideControls" : false,
+   "id" : 14,
+   "links" : [
+      {
+         "icon" : "external link",
+         "includeVars" : true,
+         "type" : "dashboards",
+         "title" : "Related Dashboards",
+         "keepTime" : true,
+         "tags" : [
+            "NetAppHarvest-Poller"
+         ],
+         "asDropdown" : true
+      }
+   ],
+   "timezone" : "browser",
+   "version" : 3,
+   "style" : "dark",
+   "templating" : {
+      "enable" : true,
+      "list" : [
+         {
+            "includeAll" : true,
+            "allFormat" : "wildcard",
+            "refresh" : 1,
+            "tagsQuery" : "",
+            "allValue" : null,
+            "query" : "netapp.poller.*",
+            "refresh_on_load" : false,
+            "name" : "PollerType",
+            "datasource" : null,
+            "tags" : [],
+            "sort" : 0,
+            "useTags" : false,
+            "hide" : 0,
+            "regex" : "",
+            "tagValuesQuery" : "",
+            "type" : "query",
+            "multi" : true,
+            "label" : null,
+            "multiFormat" : "glob"
+         },
+         {
+            "includeAll" : true,
+            "hideLabel" : false,
+            "allFormat" : "wildcard",
+            "refresh" : 1,
+            "tagsQuery" : "",
+            "allValue" : null,
+            "query" : "netapp.poller.$PollerType.*",
+            "refresh_on_load" : false,
+            "name" : "Group",
+            "datasource" : null,
+            "tags" : [],
+            "sort" : 0,
+            "useTags" : false,
+            "hide" : 0,
+            "regex" : "",
+            "tagValuesQuery" : "",
+            "type" : "query",
+            "label" : null,
+            "multi" : true,
+            "multiFormat" : "glob"
+         },
+         {
+            "includeAll" : true,
+            "allFormat" : "wildcard",
+            "refresh" : 1,
+            "tagsQuery" : "",
+            "allValue" : null,
+            "query" : "netapp.poller.$PollerType.$Group.*",
+            "refresh_on_load" : false,
+            "name" : "System",
+            "datasource" : null,
+            "tags" : [],
+            "sort" : 0,
+            "useTags" : false,
+            "hide" : 0,
+            "regex" : "",
+            "tagValuesQuery" : "",
+            "type" : "query",
+            "multi" : true,
+            "label" : null,
+            "multiFormat" : "glob"
+         },
+         {
+            "includeAll" : false,
+            "options" : [
+               {
+                  "value" : "1",
+                  "text" : "1",
+                  "selected" : false
+               },
+               {
+                  "value" : "2",
+                  "text" : "2",
+                  "selected" : false
+               },
+               {
+                  "value" : "3",
+                  "text" : "3",
+                  "selected" : false
+               },
+               {
+                  "value" : "4",
+                  "text" : "4",
+                  "selected" : false
+               },
+               {
+                  "value" : "5",
+                  "text" : "5",
+                  "selected" : true
+               },
+               {
+                  "value" : "6",
+                  "text" : "6",
+                  "selected" : false
+               },
+               {
+                  "value" : "8",
+                  "text" : "8",
+                  "selected" : false
+               },
+               {
+                  "value" : "10",
+                  "text" : "10",
+                  "selected" : false
+               },
+               {
+                  "value" : "15",
+                  "text" : "15",
+                  "selected" : false
+               },
+               {
+                  "value" : "20",
+                  "text" : "20",
+                  "selected" : false
+               },
+               {
+                  "value" : "40",
+                  "text" : "40",
+                  "selected" : false
+               }
+            ],
+            "refresh_on_load" : false,
+            "query" : "1,2,3,4,5,6,8,10,15,20,40",
+            "allValue" : null,
+            "name" : "TopResources",
+            "datasource" : null,
+            "allFormat" : "glob",
+            "refresh" : 0,
+            "hide" : 0,
+            "current" : {
+               "value" : "5",
+               "text" : "5",
+               "tags" : []
+            },
+            "type" : "custom",
+            "label" : "",
+            "multi" : false
+         }
+      ]
+   },
+   "annotations" : {
+      "enable" : false,
+      "list" : []
+   },
+   "tags" : [
+      "NetAppHarvest-Poller"
+   ],
+   "schemaVersion" : 14,
+   "gnetId" : null,
+   "editable" : true,
+   "title" : "NetApp Detail: Harvest Poller"
+}
