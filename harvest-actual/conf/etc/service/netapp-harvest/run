@@ -1,3 +1,6 @@
 #!/bin/bash
 
+## poller name and conf file are defined in the configMap and mounted to this container.
+## do not change these values without changing the corresponding configmap and volume mounts.
+
 exec /opt/netapp-harvest/netapp-worker -poller=harvest -conf=harvest-poller.conf
