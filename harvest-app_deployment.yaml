@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: harvest-app
-  namespace: harvest-test
+  namespace: harvest
 spec:
   selector:
     matchLabels:
