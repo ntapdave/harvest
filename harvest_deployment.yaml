@@ -63,3 +63,15 @@ spec:
             - mountPath: "/etc/grafana/provisioning/datasources/graphite_datasource.yaml"
               name: harvest-config
               subPath: graphite_datasource.yaml
+      initContainers:
+        - name: git-cloner
+          image: alpine/git
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/ntapdave/grafana-dashboards.git
+            - /data
+          volumeMounts:
+            - mountPath: /data
+              name: grafana-dashboards
